@@ -1,6 +1,7 @@
 package com.msg.recipe.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -17,6 +18,9 @@ public class Recipe {
     private String URL;
     private String directions;
     // todo add Difficulty field
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe" )
+    private Set<Ingredient> ingredients;
 
     @Lob
     private Byte[] image;
